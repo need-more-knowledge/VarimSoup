@@ -2,7 +2,7 @@
 import requests;
 import json;
 from API_KEY import api_token;
-
+# one can obtain API_token on https://openweathermap.org/
 url = "https://api.openweathermap.org/data/2.5/weather";
 
 params = {
