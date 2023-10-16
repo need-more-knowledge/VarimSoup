@@ -26,35 +26,35 @@ with open("tapaz.html", encoding="utf-8") as file:
 soup = BeautifulSoup(src, "lxml");
 
 #Electronics category name
-# cat_name = soup.find("div",class_="header-categories-row").find("a").find("span").text
-# print(cat_name)
-#
-# #Electronics href
-# elec_href = url + soup.find("div",class_="header-categories-row").find("a").get("href");
-# print(elec_href)
+cat_name = soup.find("div",class_="header-categories-row").find("a").find("span").text
+print(cat_name)
+
+#Electronics href
+elec_href = url + soup.find("div",class_="header-categories-row").find("a").get("href");
+print(elec_href)
 
 # ALL Electronica obyavi
-# All_href = soup.find(class_="header-subcategories-columns").find("a",class_ = "primary-subcategories-i").get("href");
-# print (url + All_href)
-# All_tr_name = soup.find("span",class_ = "primary-subcategories-i_name").text;
-# print(All_tr_name)
+All_href = soup.find(class_="header-subcategories-columns").find("a",class_ = "primary-subcategories-i").get("href");
+print (url + All_href)
+All_tr_name = soup.find("span",class_ = "primary-subcategories-i_name").text;
+print(All_tr_name)
 
 #Sub cat names + links
-# sub_cat_links = soup.find("div",class_="header-subcategories-columns")
-# for i in sub_cat_links:
-#     link = i.get("href");
-#     name = i.find("span","primary-subcategories-i_name").text;
-#     print(url + link)
-#     print(name)
+sub_cat_links = soup.find("div",class_="header-subcategories-columns")
+for i in sub_cat_links:
+    link = i.get("href");
+    name = i.find("span","primary-subcategories-i_name").text;
+    print(url + link)
+    print(name)
 
 
 # #Transport category name
-# transCatName = soup.find("a","header-category transport").find("span").text;
-# print(transCatName);
-#
-# #Transport category URL
-# transCatUrl = url + soup.find("a","header-category transport").get("href");
-# print(transCatUrl)
+transCatName = soup.find("a","header-category transport").find("span").text;
+print(transCatName);
+
+#Transport category URL
+transCatUrl = url + soup.find("a","header-category transport").get("href");
+print(transCatUrl)
 
 # ALL Categories1
 allCatList1 = soup.find(class_="header-navigation").find(class_="l-center").find("div");
