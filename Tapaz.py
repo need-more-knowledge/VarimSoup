@@ -74,7 +74,12 @@ for i in allCatList1:
     if name:
         print(name);
 
-    allCatDict[name] = link;
+    try: fullLink = url + link;
+    except: None
+
+
+
+    allCatDict[name] = fullLink;
 
    # print(f"{name}:{link}"); - variant 3apisi printa c obyeden. 2-x peremennix
 
