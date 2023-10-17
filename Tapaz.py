@@ -57,7 +57,10 @@ soup = BeautifulSoup(src, "lxml");
 # print(transCatUrl)
 
 # ALL Categories1
+
+#створимо словник для запису даних
 allCatDict ={};
+
 
 allCatList1 = soup.find(class_="header-navigation").find(class_="l-center").find("div");
 for i in allCatList1:
@@ -78,7 +81,7 @@ for i in allCatList1:
     except: None
 
 
-
+    #запишимо данні у словник
     allCatDict[name] = fullLink;
 
    # print(f"{name}:{link}"); - variant 3apisi printa c obyeden. 2-x peremennix
@@ -105,9 +108,12 @@ for i in allCatList2:
         pass;
     if name:
         print (name);
+
 fullLink = url + link;
+
+#ключем буде - НЕЙМ,  а значенням - ЛІНК
 allCatDict[name] = fullLink;
 
-
+#запишимо данні у словник із параметрами encoding="utf-8, indent=4, ensure_ascii=False
 with open ("allCatDict.json","w",encoding="utf-8") as file:
     json.dump(allCatDict, file, indent=4, ensure_ascii=False);
