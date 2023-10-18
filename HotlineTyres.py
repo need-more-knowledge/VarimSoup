@@ -40,19 +40,19 @@ for i in all_205_55_R16_txt:
 #sozdaem slovar gde klych - dannie tovata a znachenie -> ssylka
     all_products_dic[item_text] = item_href;
 
-# #сохраним нашу инфо в джейсон файл c такими параметрами
-#
-#     with open("all_205_55_R16.json", "w",encoding="utf-8") as file:
-#         json.dump(all_products_dic, file, indent=4, ensure_ascii=False)
-#
-# #   загрузим наш файл в переменную all_205_55_R16.json
-# with open("all_205_55_R16.json",encoding="utf-8") as file:
-#     all_205_55_R16 = json.load(file)
-#     print(all_205_55_R16)
-#
-# for category_name in all_205_55_R16:
-#     rep = [",", " ", "/n"," ' "," - "]
-#     for item in rep:
-#         if item in category_name:
-#             category_name = category_name.replace(item, " ")
-#             print(category_name)
+#сохраним нашу инфо в джейсон файл c такими параметрами
+
+    with open("all_205_55_R16.json", "w",encoding="utf-8") as file:
+        json.dump(all_products_dic, file, indent=4, ensure_ascii=False)
+
+#   загрузим наш файл в переменную all_205_55_R16.json
+with open("all_205_55_R16.json",encoding="utf-8") as file:
+    all_205_55_R16 = json.load(file)
+    print(all_205_55_R16)
+
+for category_name in all_205_55_R16:
+    rep = [",", " ", "/n"," ' "," - "]
+    for item in rep:
+        if item in category_name:
+            category_name = category_name.replace(item, " ")
+            print(category_name)

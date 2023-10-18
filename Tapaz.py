@@ -4,18 +4,32 @@ import json;
 import lxml;
 
 url = "https://ru.tap.az";
-# headers = {
-#     "Accept":"*/*",
-#     "User-Agent":
-#         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-# }
-# req = requests.get(url, headers=headers);
-# src = req.text;
+
+headers = {
+    'authority': 'ru.tap.az',
+    'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7',
+    'accept-language': 'en-US,en;q=0.9,ru;q=0.8',
+    'cache-control': 'no-cache',
+    'pragma': 'no-cache',
+    'sec-ch-ua': '"Chromium";v="118", "Google Chrome";v="118", "Not=A?Brand";v="99"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"Windows"',
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'none',
+    'sec-fetch-user': '?1',
+    'upgrade-insecure-requests': '1',
+    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+}
+response = requests.get('https://ru.tap.az/', headers=headers)
+
+
+src = response.text;
 
 #soxranim html v file с кодировкой ютф8
 
-# with open("tapaz.html","w", encoding="utf-8") as file:
-#     src = file.write(src);
+with open("tapaz.html","w", encoding="utf-8") as file:
+    src = file.write(src);
 
 
 # теперь у нас готов файл для работы и мы закоментим код выше
@@ -24,6 +38,8 @@ url = "https://ru.tap.az";
 with open("tapaz.html", encoding="utf-8") as file:
     src = file.read()
 soup = BeautifulSoup(src, "lxml");
+title = soup.title
+print(title.string)
 #
 # #Electronics category name
 # cat_name = soup.find("div",class_="header-categories-row").find("a").find("span").text
@@ -117,3 +133,8 @@ allCatDict[name] = fullLink;
 #запишимо данні у словник із параметрами encoding="utf-8, indent=4, ensure_ascii=False
 with open ("allCatDict.json","w",encoding="utf-8") as file:
     json.dump(allCatDict, file, indent=4, ensure_ascii=False);
+
+
+# Pagination links
+
+
