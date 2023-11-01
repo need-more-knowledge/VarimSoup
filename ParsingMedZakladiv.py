@@ -8,7 +8,7 @@ from urllib.parse import unquote
 import random
 import json
 from selenium.webdriver.common.by import By
-from urllib.parse import unquote
+
 
 
 headers = {
@@ -16,7 +16,7 @@ headers = {
     "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
 }
 
-
+# За допомогою селена и акшнчейнс збираємо всю інфу на одну сторінку
 # def get_source_html(url):
 #
 #     driver = webdriver.Chrome();
@@ -153,7 +153,9 @@ def get_data(file_path2):
 
 
 def main():
+    #збираємо всі данні на 1 сторінці і зберігаємо ії.
     #get_source_html(url="https://spb.zoon.ru/medical/?search_query_form=1&m%5B5200e522a0f302f066000055%5D=1&center%5B%5D=59.91878264665887&center%5B%5D=30.342586983263384&zoom=10")
+    #
     #print(get_items_urls(file_path))
     print(get_data(file_path2))
 

@@ -51,8 +51,9 @@ with open("all_205_55_R16.json",encoding="utf-8") as file:
     print(all_205_55_R16)
 
 for category_name in all_205_55_R16:
-    rep = [",", " ", "/n"," ' "," - "]
+    rep = [",", " ", "/n","\n"," ' "," - "]
     for item in rep:
         if item in category_name:
             category_name = category_name.replace(item, " ")
+            category_name.strip()
             print(category_name)

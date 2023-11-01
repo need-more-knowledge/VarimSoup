@@ -2,9 +2,14 @@ import requests;
 from bs4 import BeautifulSoup;
 import json;
 import lxml;
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+import time
+from selenium.webdriver.common.by import By
 
 
 url = "https://ru.tap.az";
+url1 = "https://ru.tap.az/elanlar/elektronika/plansetler"
 
 headers = {
     'authority': 'ru.tap.az',
@@ -22,25 +27,25 @@ headers = {
     'upgrade-insecure-requests': '1',
     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
 }
-response = requests.get('https://ru.tap.az/', headers=headers)
+#response = requests.get('https://ru.tap.az/', headers=headers)
 
 
-src = response.text;
+#src = response.text;
 
 #soxranim html v file с кодировкой ютф8
 
-with open("tapaz.html","w", encoding="utf-8") as file:
-    src = file.write(src);
+# with open("tapaz.html","w", encoding="utf-8") as file:
+#     src = file.write(src);
 
 
 # теперь у нас готов файл для работы и мы закоментим код выше
 # подготовим файл и скормим его нашему парсеру
 
-with open("tapaz.html", encoding="utf-8") as file:
-    src = file.read()
-soup = BeautifulSoup(src, "lxml");
-title = soup.title
-print(title.string)
+# with open("tapaz.html", encoding="utf-8") as file:
+#     src = file.read()
+# soup = BeautifulSoup(src, "lxml");
+# title = soup.title
+# print(title.string)
 #
 # #Electronics category name
 # cat_name = soup.find("div",class_="header-categories-row").find("a").find("span").text
@@ -76,30 +81,30 @@ print(title.string)
 # ALL Categories1
 
 #створимо словник для запису даних
-allCatDict ={};
-
-
-allCatList1 = soup.find(class_="header-navigation").find(class_="l-center").find("div");
-for i in allCatList1:
-    link = i.get("href");
-    if link:
-        print(url + link);
-    else:
-        pass
-
-    name = i.find("span").text;
-    if name == "Детский мир":
-        print(name);
-        break;
-    if name:
-        print(name);
-
-    try: fullLink = url + link;
-    except: None
-
-
-    #запишимо данні у словник
-    allCatDict[name] = fullLink;
+# allCatDict ={};
+#
+#
+# allCatList1 = soup.find(class_="header-navigation").find(class_="l-center").find("div");
+# for i in allCatList1:
+#     link = i.get("href");
+#     if link:
+#         print(url + link);
+#     else:
+#         pass
+#
+#     name = i.find("span").text;
+#     if name == "Детский мир":
+#         print(name);
+#         break;
+#     if name:
+#         print(name);
+#
+#     try: fullLink = url + link;
+#     except: None
+#
+#
+#     #запишимо данні у словник
+#     allCatDict[name] = fullLink;
 
    # print(f"{name}:{link}"); - variant 3apisi printa c obyeden. 2-x peremennix
 
@@ -108,34 +113,34 @@ for i in allCatList1:
 
 
 # ALL Categories2
-allCatList2 = soup.find(class_="header-navigation").find(class_="l-center").find("div").find_next_sibling("div",class_="header-categories-row");
-
-for i in allCatList2:
-    link = i.get("href");
-    if link:
-        print(url + link);
-    else:
-        pass
-
-    name = i.find("span").text;
-    if name == "Магазины":
-        print(name);
-        break;
-    if name == "Все объявления":
-        pass;
-    if name:
-        print (name);
-
-fullLink = url + link;
+# allCatList2 = soup.find(class_="header-navigation").find(class_="l-center").find("div").find_next_sibling("div",class_="header-categories-row");
+#
+# for i in allCatList2:
+#     link = i.get("href");
+#     if link:
+#         print(url + link);
+#     else:
+#         pass
+#
+#     name = i.find("span").text;
+#     if name == "Магазины":
+#         print(name);
+#         break;
+#     if name == "Все объявления":
+#         pass;
+#     if name:
+#         print (name);
+#
+# fullLink = url + link;
 
 #ключем буде - НЕЙМ,  а значенням - ЛІНК
-allCatDict[name] = fullLink;
+# allCatDict[name] = fullLink;
 
 #запишимо данні у словник із параметрами encoding="utf-8, indent=4, ensure_ascii=False
-with open ("allCatDict.json","w",encoding="utf-8") as file:
-    json.dump(allCatDict, file, indent=4, ensure_ascii=False);
+# with open ("allCatDict.json","w",encoding="utf-8") as file:
+#     json.dump(allCatDict, file, indent=4, ensure_ascii=False);
 
 
-# Pagination links
+# Dynamic Pagination
 
 
