@@ -146,7 +146,7 @@ def get_data(file_path2):
 
         count += 1
 
-    with open("MedClinResult.json", "w",encoding = 'UTF-8') as file:
+    with open("MedClinResult.json", "w", encoding ='UTF-8') as file:
         json.dump(result_list, file, indent=4, ensure_ascii=False)
 
     return "[INFO] Data collected successfully!"
