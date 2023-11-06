@@ -90,20 +90,25 @@ def get_data_dep(file_path1):
             soup = BeautifulSoup(response.text, "lxml")
 
             try:
-                photo_link = soup.find("div",class_="information_block_ins")
+                photo_link = soup.find("div",class_="information_block_ins").find("img").get("src")
 
             except Exception as _ex:
                 photo_link = None
 
+            try:
+                fullName = soup.find("div",class_="information_block_ins").find("h2").text
 
+            except Exception as _ex:
+                fullName = None
 
 
             result_list.append(
                 {
-                    "photo": photo_link
+                    "photo": photo_link,
+                    "name": fullName
                 }
             )
-            print(photo_link)
+            print(fullName)
         #     time.sleep(random.randrange(2, 5))
         #
         # if count%10 == 0:
